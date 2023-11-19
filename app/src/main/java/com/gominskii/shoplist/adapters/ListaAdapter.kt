@@ -1,4 +1,4 @@
-package com.gominskii.shoplist
+package com.gominskii.shoplist.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.gominskii.shoplist.R
+import com.gominskii.shoplist.view_models.ListaVM
 
 class ListaAdapter(
     private val listaAfazeres: ArrayList<ListaVM>,

@@ -6,7 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.gominskii.shoplist.adapters.ListaAdapter
 import com.gominskii.shoplist.databinding.ActivityCadastroBinding
+import com.gominskii.shoplist.view_models.ListaVM
 import com.google.android.material.snackbar.Snackbar
 
 class CadastroActivity : AppCompatActivity() {
