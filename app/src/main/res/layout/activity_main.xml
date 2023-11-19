@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:visibility="visible"
+    android:theme="@style/ListaDeCompras"
     tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,10 +22,11 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/mainToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/purple_500"
+                android:backgroundTint="@color/purple_500"
                 android:paddingStart="15dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="15dp"
@@ -32,7 +35,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:title="Suas listas de compras"
-                app:titleTextColor="@color/white" />
+                app:titleTextColor="@color/white"></androidx.appcompat.widget.Toolbar>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -48,7 +51,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/ic_add"
-        app:backgroundTint="@color/purple_500"/>
-
-
+        app:backgroundTint="@color/purple_500" />
 </androidx.constraintlayout.widget.ConstraintLayout>

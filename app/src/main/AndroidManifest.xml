@@ -10,21 +10,22 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.ListaDeCompras"
+        android:theme="@style/ListaDeCompras"
         tools:targetApi="31">
         <activity
             android:name=".CadastroActivity"
-            android:exported="false">
-        </activity>
+            android:theme="@style/ListaDeCompras"
+            android:windowSoftInputMode="adjustResize"
+            android:label="@string/title_activity_cadastro"
+            android:exported="false"></activity>
 
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.ListaDeCompras">
+            android:theme="@style/ListaDeCompras">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
