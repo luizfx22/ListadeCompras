@@ -12,7 +12,7 @@ import com.gominskii.shoplist.view_models.ListaVM
 class ListaAdapter(
     private val listaAfazeres: ArrayList<ListaVM>,
     private val defaultCheckboxDisabled: Boolean = false,
-    private val checkOnTextClick: Boolean = false
+    private val checkOnTextClick: Boolean = true
 ) : RecyclerView.Adapter<ListaAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val concluidoCheckBox: CheckBox = itemView.findViewById(R.id.concluidoCheckBox)
@@ -32,8 +32,30 @@ class ListaAdapter(
 
             itemTextView.text = item.texto
 
-            if (!defaultCheckboxDisabled)
+            if (!defaultCheckboxDisabled) {
                 concluidoCheckBox.isChecked = item.concluido
+
+                if (item.concluido) {
+                    itemTextView.paintFlags =
+                        itemTextView.paintFlags or android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
+                } else {
+                    itemTextView.paintFlags =
+                        itemTextView.paintFlags and android.graphics.Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+            }
+
+            concluidoCheckBox.setOnCheckedChangeListener { _, isChecked ->
+                item.concluido = isChecked
+
+                // Strike through text
+                if (isChecked) {
+                    itemTextView.paintFlags =
+                        itemTextView.paintFlags or android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
+                } else {
+                    itemTextView.paintFlags =
+                        itemTextView.paintFlags and android.graphics.Paint.STRIKE_THRU_TEXT_FLAG.inv()
+                }
+            }
         }
     }
 

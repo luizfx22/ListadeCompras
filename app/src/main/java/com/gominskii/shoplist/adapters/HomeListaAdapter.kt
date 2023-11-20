@@ -1,58 +1,42 @@
 package com.gominskii.shoplist.adapters
 
+import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.TextView
-import androidx.recyclerview.widget.RecyclerView
+import com.gominskii.shoplist.ListaView
 import com.gominskii.shoplist.R
 import com.gominskii.shoplist.view_models.HomeListaVM
 
-class HomeListaAdapter(
-    private val listaAfazeres: ArrayList<HomeListaVM>
-) : RecyclerView.Adapter<HomeListaAdapter.ViewHolder>() {
+class HomeListaAdapter(context: Context, resource: Int, objects: ArrayList<HomeListaVM>) :
+    ArrayAdapter<HomeListaVM>(context, resource, objects) {
 
-    interface OnItemClickListener {
-        fun onItemClick(item: HomeListaVM)
-    }
-
-    private var clickListener: OnItemClickListener? = null
-
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val itemTextView: TextView = itemView.findViewById(R.id.itemTextView)
-
-        fun bind(item: HomeListaVM) {
-            itemTextView.text = item.texto
+    override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+        var listItemView = convertView
+        if (listItemView == null) {
+            listItemView =
+                LayoutInflater.from(context).inflate(R.layout.home_lista_item, parent, false)
         }
-    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val context = parent.context
-        val inflater = LayoutInflater.from(context)
-        val afazeresView = inflater.inflate(R.layout.home_lista_item, parent, false)
+        val currentItem = getItem(position)
 
-        return ViewHolder(afazeresView)
-    }
+        val textView = listItemView?.findViewById<TextView>(R.id.listasListViewItemTextView)
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = listaAfazeres[position]
-        holder.bind(item)
+        textView?.text = currentItem?.name
 
-        holder.itemView.setOnClickListener {
-            clickListener?.onItemClick(item)
+        listItemView?.setOnClickListener {
+            currentItem?.let {
+                Log.d("CustomAdapter", "Clicou em: ${it.id}")
+                val intent = Intent(context, ListaView::class.java)
+                intent.putExtra("id", it.id)
+                context.startActivity(intent)
+            }
         }
-    }
 
-    override fun getItemCount(): Int {
-        return listaAfazeres.size
-    }
-
-    fun adicionarItem(item: HomeListaVM) {
-        listaAfazeres.add(item)
-        notifyItemInserted(listaAfazeres.size - 1)
-    }
-
-    fun setOnItemClickListener(listener: OnItemClickListener) {
-        clickListener = listener
+        return listItemView!!
     }
 }

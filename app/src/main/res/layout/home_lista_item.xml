@@ -2,35 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:id="@+id/llClickableArea"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?android:attr/selectableItemBackground"
+    android:padding="10dp"
     android:orientation="horizontal">
 
-    <LinearLayout
-        android:id="@+id/llClickableArea"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/listasListViewItemTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"
-        android:padding="10dp">
+        android:text="Item"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="10dp" />
 
-        <TextView
-            android:id="@+id/itemTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Item"
-            android:textSize="18sp"
-            android:textColor="@color/black"
-            android:layout_gravity="center_vertical"
-            android:layout_marginStart="10dp" />
+    <!--        <ImageView-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_gravity="center_vertical|end"-->
+    <!--            android:src="@drawable/ic_view"-->
+    <!--            android:tint="@color/black" />-->
 
-        <!--        <ImageView-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center_vertical|end"-->
-        <!--            android:src="@drawable/ic_view"-->
-        <!--            android:tint="@color/black" />-->
-
-    </LinearLayout>
 
 </LinearLayout>
